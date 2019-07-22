@@ -17,10 +17,7 @@
 
 static void GLClearError()
 {
-	while (glGetError() != GL_NO_ERROR)
-	{
-
-	}
+	while (glGetError() != GL_NO_ERROR);
 }
 
 static bool GLLogCall(const char* function, const char* file, int line)
@@ -125,6 +122,8 @@ int main(void)
 	/* Initialize the library */
 	if (!glfwInit())
 		return -1;
+
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	/* Create a windowed mode window and its OpenGL context */
 	window = glfwCreateWindow(2560, 1440, "Hello World", NULL, NULL);
